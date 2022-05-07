@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block page_title %} Pets Home {% endblock %}
+
+{% block page_content %}
+    <h1>Pets Directory</h1>
+    <a href="/add">Add Pet</a>
+    <section id="pet_display" class="row">
+        {% for pet in pets %}
+            <div class="col-3">
+            <img src="{{pet.photo_url}}" alt="Photograph of pet" class="img-tumbnail">
+            <a href="/{{pet.id}}">{{pet.name}}</a>
+            {% if pet.available %} <b>Available Now!</b> {% endif %}
+            </div>
+        {% else %}
+        <p>No Pets Yet!</p>
+        {% endfor %}
+    </section>
+{% endblock %}

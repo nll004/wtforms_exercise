@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block page_title %} Add Pet {% endblock %}
+
+{% block page_content %}
+    <a href="/">Pets Directory</a>
+
+    <h1>Add Pet</h1>
+    <form action="/add" method="POST">
+        {% for field in form if field.widget.input_type != 'hidden' %}
+        {{field.label}}
+        {{field}}
+        <span>
+            {% if field.errors %}
+                {% for error in field.errors %}
+                <b>{{ error }}</b>
+                {% endfor %}
+            {% endif %}
+        </span>
+        {% endfor %}
+        <button>Submit</button>
+    </form>
+{% endblock %}
